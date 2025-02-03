@@ -7,35 +7,32 @@ app.use(express.json());
 const web_link = "https://miniappclone.vercel.app/"; // Replace with your web app URL
 const community_link = "https://t.me/cribbleorg";
 
-// Handle the `/start` command
-// bot.command('/start', (ctx) => {
-//     const startPayload = ctx.message.text.split(' ').slice(1).join(' '); // Extract potential payload after '/start'
-//     const urlSent = `${web_link}?ref=${encodeURIComponent(startPayload)}`; // Encode payload for URL safety
-//     const user = ctx.message.from;
-//     const userName = user.username ? `@${user.username}` : user.first_name;
-//     console.log('Replying to user:', userName); // Log user data
-
-//     // Try replying with plain text first
-//     ctx.reply(`*Hey, ${userName}! Welcome to Cribble!*\n\nMine $TRACEX cryptocurrency easily and earn $TRACEX tokens.\n\nStart mining now and be among the biggest players earning $TRACEX tokens daily.\n\nGot friends, relatives, co-workers? Bring them all into the game. More squad power, more $TRACEX tokens`, {
-//         parse_mode: "Markdown", // Ensure Markdown is enabled for formatting
-//         reply_markup: {
-//             inline_keyboard: [
-//                 [{ text: " Start now!", web_app: { url: urlSent } }],
-//                 [{ text: "Join our Community", url: community_link }]
-//             ]
-//         }
-//     }).then(() => {
-//         console.log('Message sent successfully');
-//     }).catch((error) => {
-//         console.error('Error sending message:', error);
-//     });
-// });
 bot.hears("/start", (ctx) => {
-    console.log(`Received /start from user: ${ctx.message.from.id}`);
+    const startPayload = ctx.message.text.split(" ").slice(1).join(" "); // Extract potential payload after '/start'
+    const urlSent = `${web_link}?ref=${encodeURIComponent(startPayload)}`; // Encode payload for URL safety
+    const user = ctx.message.from;
+    const userName = user.username ? `@${user.username}` : user.first_name;
 
-    ctx.reply("Hey! Your bot is working 🎉")
-        .then(() => console.log("Message sent successfully!"))
-        .catch((error) => console.error("Error sending message:", error));
+    console.log("Replying to user:", userName); // Log user data
+
+    ctx.reply(
+        `*Hey, ${userName}! Welcome to Cribble!*\n\nMine $TRACEX cryptocurrency easily and earn $TRACEX tokens.\n\nStart mining now and be among the biggest players earning $TRACEX tokens daily.\n\nGot friends, relatives, co-workers? Bring them all into the game. More squad power, more $TRACEX tokens`,
+        {
+            parse_mode: "Markdown", // Ensure Markdown is enabled for formatting
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: " Start now!", web_app: { url: urlSent } }],
+                    [{ text: "Join our Community", url: community_link }],
+                ],
+            },
+        }
+    )
+        .then(() => {
+            console.log("Message sent successfully");
+        })
+        .catch((error) => {
+            console.error("Error sending message:", error);
+        });
 });
 
 
