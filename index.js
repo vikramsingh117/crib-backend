@@ -51,13 +51,13 @@ bot.telegram.setWebhook(`${WEBHOOK_URL}/bot${TOKEN}`).then(() => {
 
 // Handle incoming updates via webhook
 app.post(`/bot${TOKEN}`, (req, res) => {
+    res.sendStatus(200); // Acknowledge receipt of the update
     console.log('Received an update from Telegram:', req.body); // Log the incoming update
     bot.handleUpdate(req.body).then(() => {
         console.log('Bot handled the update successfully.');
     }).catch((error) => {
         console.error('Error handling the update:', error);
     });
-    res.sendStatus(200); // Acknowledge receipt of the update
 });
 
 // Listen for incoming HTTP requests
