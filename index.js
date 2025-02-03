@@ -14,7 +14,7 @@ bot.command('/start', (ctx) => {
     const user = ctx.message.from;
     const userName = user.username ? `@${user.username}` : user.first_name;
     console.log('Replying to user:', userName); // Log user data
-    ctx.replyWithMarkdown(`*Hey, ${userName}! Welcome to Cribble!*  
+    ctx.replyWithMarkdownV2(`*Hey, ${userName}! Welcome to Cribble!*  
 
 Mine $TRACEX cryptocurrency easily and earn $TRACEX tokens.  
 
@@ -37,7 +37,7 @@ More squad power, more $TRACEX tokens
 const PORT = process.env.PORT || 3000;
 const WEBHOOK_URL = `https://crib-backend.onrender.com`; // Replace with your actual Render URL
 
-// Set the webhook only once
+// Set the webhook only once, prevent polling
 bot.telegram.setWebhook(`${WEBHOOK_URL}/bot${TOKEN}`).then(() => {
     console.log('Webhook successfully set!');
 }).catch((err) => {
@@ -55,6 +55,7 @@ app.post(`/bot${TOKEN}`, (req, res) => {
     res.sendStatus(200); // Acknowledge receipt of the update
 });
 
+// Listen for incoming HTTP requests
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
