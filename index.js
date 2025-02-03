@@ -32,9 +32,16 @@ More squad power, more $TRACEX tokens
         }
     });
 });
+const PORT = process.env.PORT || 3000;
+const WEBHOOK_URL = `https://crib-backend.onrender.com`; // Replace with your actual Render URL
 
-bot.launch();
+bot.telegram.setWebhook(`${WEBHOOK_URL}/bot${TOKEN}`);
 
-app.listen(3000, () => {
-    console.log("Server is running!");
+app.post(`/bot${TOKEN}`, (req, res) => {
+    bot.handleUpdate(req.body);
+    res.sendStatus(200);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
