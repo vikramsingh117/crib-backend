@@ -13,7 +13,7 @@ bot.command('/start', (ctx) => {
     const urlSent = `${web_link}?ref=${encodeURIComponent(startPayload)}`; // Encode payload for URL safety
     const user = ctx.message.from;
     const userName = user.username ? `@${user.username}` : user.first_name;
-    ctx.replyWithMarkdown(`*Hey, ${userName}! Welcome to Cribble!*  
+    ctx.replyWithMarkdownV2(`*Hey, ${userName}! Welcome to Cribble!*  
 
 Mine $TRACEX cryptocurrency easily and earn $TRACEX tokens.  
 
