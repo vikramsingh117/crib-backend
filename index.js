@@ -30,13 +30,14 @@ const community_link = "https://t.me/cribbleorg";
 //         console.error('Error sending message:', error);
 //     });
 // });
-bot.command('/start', (ctx) => {
+bot.hears("/start", (ctx) => {
     console.log(`Received /start from user: ${ctx.message.from.id}`);
 
     ctx.reply("Hey! Your bot is working 🎉")
         .then(() => console.log("Message sent successfully!"))
         .catch((error) => console.error("Error sending message:", error));
 });
+
 
 
 const PORT = process.env.PORT || 3000;
