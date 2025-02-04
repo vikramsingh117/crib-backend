@@ -16,7 +16,7 @@ bot.hears("/start", (ctx) => {
     console.log("Replying to user:", userName); // Log user data
 
     ctx.reply(
-        `*Hey, ${userName}! Welcome to Cribble!*\n\nMine $CRIBL cryptocurrency easily and earn $CRIBL tokens.\n\nStart mining now and be among the biggest players earning $CRIBL tokens daily.\n\nGot friends, relatives, co-workers? Bring them all into the game. More squad power, more $CRIBL tokens`,
+        `*Hey, ${userName}! Welcome to Cribble!*\n\nMine $CRBLE cryptocurrency easily and earn $CRIBL tokens.\n\nStart mining now and be among the biggest players earning $CRBLE tokens daily.\n\nGot friends, relatives, co-workers? Bring them all into the game. More squad power, more $CRBLE tokens`,
         {
             parse_mode: "Markdown", // Ensure Markdown is enabled for formatting
             reply_markup: {
