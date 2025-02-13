@@ -27,7 +27,14 @@ bot.hears("/start", (ctx) => {
         `Automatically discover active airdrops, NFT claims, and staking opportunities\n\n` +
         `🤖 <b>Research Agent</b>\n` +
         `Instant answers about protocols, trends, and any query about Web3 space\n\n` +
-        `📌 <b>Choose your tool below to begin</b>`
+        `📌 <b>Choose your tool below to begin</b>`,
+        Markup.inlineKeyboard([
+            [Markup.button.callback("Analysis", "analysis")],
+            [Markup.button.callback("Socials", "socials"), Markup.button.callback("Crypto", "crypto")],
+            [Markup.button.callback("Rewards", "rewards")],
+            [Markup.button.callback("Airdrops", "airdrops"), Markup.button.callback("Giveaways", "giveaways")],
+            [Markup.button.url("Join Community", community_link)]
+        ])
     )
     .then(() => {
         console.log("Message sent successfully");
