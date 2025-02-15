@@ -33,7 +33,9 @@ bot.hears("/start", (ctx) => {
             [Markup.button.callback("Socials", "socials"), Markup.button.callback("Crypto", "crypto")],
             [Markup.button.callback("Rewards", "rewards")],
             [Markup.button.callback("Airdrops", "airdrops"), Markup.button.callback("Giveaways", "giveaways")],
-            [Markup.button.url("Join Community", community_link)]
+            [Markup.button.url("Join Community", community_link)],
+            [Markup.button.url("Get started", web_link)]
+
         ])
     )
     .then(() => {
